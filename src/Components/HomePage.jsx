@@ -8,7 +8,7 @@ import Cryptocurrencies from './Cryptocurrencies';
 import News from './News';
 import Loader from './Loader';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const HomePage = () => {
     const { data, isLoading, error } = useGetCryptosQuery(10)
@@ -31,13 +31,13 @@ const HomePage = () => {
 
             <div className="home-heading-container">
                 <Title level={2} className='home-title'>Top 10 Cryptocurrencies in the World</Title>
-                <Title level={3} className='show-more'><Link to='/cryptocurrencies'>Show More</Link></Title>
+                <Text className='show-more'><Link to='/cryptocurrencies' className='more'>Show More</Link></Text>
             </div>
             <Cryptocurrencies simplified />
 
             <div className="home-heading-container">
                 <Title level={2} className='home-title'>Latest Crypto News</Title>
-                <Title level={3} className='show-more'><Link to='/news'>Show More</Link></Title>
+                <Text className='show-more'><Link to='/news' className='more'>Show More</Link></Text>
             </div>
             <News simplified />
         </>

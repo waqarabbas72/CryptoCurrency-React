@@ -30,12 +30,11 @@ const App = () => {
 
           </div>
         </Layout>
-      </div>
 
       <div className="footer">
         <Typography.Title level={5} style={{ color: "white", textAlign: 'center' }}>
           Cryptoverse <br />
-          All rights reserved
+          All rights reserved <br /> Designed By WAQAR ABBAS
         </Typography.Title>
         <Space>
           <Link to='/'>Home</Link>
@@ -44,6 +43,7 @@ const App = () => {
         </Space>
       </div>
     </div>
+      </div>
   )
 }
 

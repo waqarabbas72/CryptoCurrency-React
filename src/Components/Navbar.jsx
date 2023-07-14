@@ -5,7 +5,7 @@ import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOut
 import icon from '../Images/cryptocurrency.png';
 
 const Navbar = () => {
-    const [activeMenu, setActiveMenu] = useState(false);
+    const [activeMenu, setActiveMenu] = useState(true);
     const [screenSize, setScreenSize] = useState(null);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        if (screenSize < 768) {
+        if (screenSize < 800) {
             setActiveMenu(false)
         } else {
             setActiveMenu(true)
@@ -28,16 +28,18 @@ const Navbar = () => {
         <>
             <div className='nav-container'>
                 <div className="logo-container">
-                    <Avatar src={icon} size='large' />
-                    <Typography.Title level={2} className='logo'>
-                        <Link to='/'>Cryptoverse</Link>
-                    </Typography.Title>
+                    <div style={{ display: 'flex' }}>
+                        <Avatar src={icon} size='large' />
+                        <Typography.Title level={2} className='logo'>
+                            <Link to='/'>Cryptoverse</Link>
+                        </Typography.Title>
+                    </div>
                     <Button className='menu-control-container' onClick={() => setActiveMenu(!activeMenu)}>
                         <MenuOutlined />
                     </Button>
 
                     {activeMenu && (
-                        <Menu theme='dark'>
+                        <Menu theme='dark' className='menuItems'>
                             <Menu.Item icon={<HomeOutlined />}>
                                 <Link to='/'>Home</Link>
                             </Menu.Item>
