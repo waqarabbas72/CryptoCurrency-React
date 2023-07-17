@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
 import { Row, Col, Typography, Select } from 'antd';
@@ -21,9 +20,7 @@ const CryptoDetails = () => {
 
   const cryptoDetails = data?.data?.coin;
 
-  if (isLoading) return <Loader/>
-
-  console.log(coinHistory);
+  if (isLoading) return <Loader />
 
   const time = ['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y'];
 

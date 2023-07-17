@@ -17,7 +17,7 @@ const Cryptocurrencies = ({ simplified }) => {
     setCryptos(filteredData)
   }, [cryptoList, searchTerm])
 
-  if (isLoading) return <Loader/>
+  if (isLoading) return <Loader />
 
 
   return (
@@ -30,7 +30,7 @@ const Cryptocurrencies = ({ simplified }) => {
 
       <Row gutter={[32, 32]} className='crypto-card-container'>
         {cryptos?.map((currency) => (
-          <Col xs={24} sm={12} lg={6} className='crypto-card' key={currency.uuid}>
+          <Col xs={24} sm={12} lg={8} xxl={6} className='crypto-card' key={currency.uuid}>
             <Link to={`/crypto/${currency.uuid}`}>
               <Card
                 title={`${currency.rank}. ${currency.name}`}

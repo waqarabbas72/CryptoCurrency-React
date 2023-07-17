@@ -5,22 +5,31 @@ import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOut
 import icon from '../Images/cryptocurrency.png';
 
 const Navbar = () => {
-    const [activeMenu, setActiveMenu] = useState(true);
+    const [activeMenu, setActiveMenu] = useState(false);
+
     const [screenSize, setScreenSize] = useState(null);
 
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+
+
     useEffect(() => {
-        const handleResize = () => setScreenSize(window.innerWidth);
         window.addEventListener('resize', handleResize);
         handleResize();
-
         return window.removeEventListener('resize', handleResize);
-    }, []);
+
+
+    }, [window.innerWidth]);
 
     useEffect(() => {
-        if (screenSize < 800) {
+        if (screenSize < 900) {
+            handleResize();
+
             setActiveMenu(false)
         } else {
-            setActiveMenu(true)
+            setActiveMenu(false)
+            handleResize();
+
         }
     }, [screenSize])
 
@@ -37,22 +46,35 @@ const Navbar = () => {
                     <Button className='menu-control-container' onClick={() => setActiveMenu(!activeMenu)}>
                         <MenuOutlined />
                     </Button>
+                    
+                    {!activeMenu && (
+                        <Menu theme='dark' className='menu-lg'>
+                        <Menu.Item icon={<HomeOutlined />}>
+                            <Link to='/'>Home</Link>
+                        </Menu.Item>
+                        <Menu.Item icon={<FundOutlined />}>
+                            <Link to='/cryptocurrencies'>Cryptocurrencies</Link>
+                        </Menu.Item>
+                        <Menu.Item icon={<BulbOutlined />}>
+                            <Link to='/news'>News</Link>
+                        </Menu.Item>
+                    </Menu>
+                    )}
+                
 
                     {activeMenu && (
-                        <Menu theme='dark' className='menuItems'>
-                            <Menu.Item icon={<HomeOutlined />}>
-                                <Link to='/'>Home</Link>
-                            </Menu.Item>
-                            <Menu.Item icon={<FundOutlined />}>
-                                <Link to='/cryptocurrencies'>Cryptocurrencies</Link>
-                            </Menu.Item>
-                            <Menu.Item icon={<MoneyCollectOutlined />}>
-                                <Link to='/exchanges'>Exchanges</Link>
-                            </Menu.Item>
-                            <Menu.Item icon={<BulbOutlined />}>
-                                <Link to='/news'>News</Link>
-                            </Menu.Item>
-                        </Menu>
+                        <>
+                            <Menu theme='dark' className='sm-meniItem'>
+                                <Menu.Item icon={<HomeOutlined />}>
+                                    <Link to='/'>Home</Link>
+                                </Menu.Item>
+                                <Menu.Item icon={<FundOutlined />}>
+                                    <Link to='/cryptocurrencies'>Cryptocurrencies</Link>
+                                </Menu.Item>
+                                <Menu.Item icon={<BulbOutlined />}>
+                                    <Link to='/news'>News</Link>
+                                </Menu.Item>
+                            </Menu></>
                     )}
 
                 </div>
